@@ -5,15 +5,15 @@ import {Component, Vue} from 'vue-property-decorator';
 })
 export default class FoodChoice extends Vue {
 
-    private suggestions: String[] = ['Nacho Auflauf', 'Nichts', 'Pizza', 'Asia-Shit'];
+    private suggestions: string[] = ['Nacho Auflauf', 'Nichts', 'Pizza', 'Asia-Shit'];
 
-    private addSuggestion(suggestion: String) {
-        console.log(suggestion)
+    private addSuggestion(suggestion: string) {
+        // console.log(suggestion)
         this.suggestions.push(suggestion);
     }
 
-    private deleteSuggestion(suggestion: String) {
-        this.suggestions.splice(this.suggestions.indexOf(suggestion) ,1);
+    private deleteSuggestion(suggestion: string) {
+        this.suggestions.splice(this.suggestions.indexOf(suggestion) , 1);
     }
 
 }

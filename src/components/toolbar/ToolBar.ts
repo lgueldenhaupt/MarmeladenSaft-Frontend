@@ -1,6 +1,8 @@
 import {Component, Vue} from 'vue-property-decorator';
 
-@Component
+@Component ({
+    name: 'ToolBar',
+})
 export default class ToolBar extends Vue {
 
     private toggleStatus: boolean = false;

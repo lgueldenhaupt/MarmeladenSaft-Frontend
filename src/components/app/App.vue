@@ -2,7 +2,7 @@
     <div id="app">
         <div class="md-layout">
             <div class="md-layout-item md-size-10 sidebar_layout fixed_on_top">
-                <SideBar style="background-color: #2c3e50"></SideBar>
+                <SideBar></SideBar>
             </div>
             <div class="md-layout-item">
                 <ToolBar></ToolBar>

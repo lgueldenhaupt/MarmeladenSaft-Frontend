@@ -1,45 +1,62 @@
 <template>
-  <div>
-    <v-form>
-      <v-container>
-        <v-layout>
-          <v-flex
-            xs12
-            md4
-          >
-            <v-text-field
-              v-model="username"
-              label="Username"
-              required
-            />
-          </v-flex>
+  <v-container fluid>
+    <v-layout
+      column
+      align-center
+    >
+      <v-flex xs12>
+        <v-card>
+          <v-card-text>
+            <v-form>
+              <v-container fluid>
+                <v-layout column>
+                  <v-flex
+                    xs12
+                    md4
+                  >
+                    <v-text-field
+                      v-model="username"
+                      label="Username"
+                      required
+                    />
+                  </v-flex>
 
-          <v-flex
-            xs12
-            md4
-          >
-            <v-text-field
-              v-model="password"
-              label="Password"
-              required
-            />
-          </v-flex>
+                  <v-flex
+                    xs12
+                    md4
+                  >
+                    <v-text-field
+                      v-model="password"
+                      label="Password"
+                      type="password"
+                      required
+                    />
+                  </v-flex>
 
-          <v-btn
-            color="success"
-            @click="login"
-          >
-            Log In!
-          </v-btn>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-form>
+                  <v-btn
+                    color="success"
+                    @click="login"
+                  >
+                    LOGIN
+                  </v-btn>
+                  <v-flex
+                    xs12
+                    md4
+                  >
+                    <small>Don't have an account? <a>Sign up</a></small>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-form>
+          </v-card-text>
+        </v-card>
+      </v-flex>
+    </v-layout>
 
     <v-snackbar
       v-model="snackbar.show"
       :timeout="snackbar.timeout"
-      :top="true"
+      top
     >
       {{ snackbar.text }}
       <v-btn
@@ -49,7 +66,7 @@
         Close
       </v-btn>
     </v-snackbar>
-  </div>
+  </v-container>
 </template>
 
 <script>

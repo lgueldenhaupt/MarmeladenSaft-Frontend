@@ -65,6 +65,7 @@ export default {
         items: [
           { title: 'Oscars', icon: 'mdi-trophy', to: { name: 'oscars' } },
           { title: 'Food', icon: 'mdi-food-fork-drink', to: { name: 'food' } },
+          { title: 'Login', icon: 'mdi-food-fork-drink', to: { name: 'login' } },
         ],
       },
     };

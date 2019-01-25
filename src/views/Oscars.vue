@@ -1,23 +1,29 @@
 <template>
   <div>
-    <v-container
-      fluid
-      grid-list-md
-    >
-      <v-layout
-        row
-        wrap
+    <div v-for="category in categories">
+      <h1 class="text-md-center">
+        {{ category.name }}
+      </h1>
+      <v-divider />
+      <v-container
+        fluid
+        grid-list-sm
       >
-        <v-flex
-          v-for="movie in movies"
-          xs12
-          sm5
-          md3
+        <v-layout
+          row
+          wrap
         >
-          <movie-card :movie="movie" />
-        </v-flex>
-      </v-layout>
-    </v-container>
+          <v-flex
+            v-for="movie in movies"
+            xs5
+            sm3
+            md2
+          >
+            <movie-card :movie="movie" />
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </div>
   </div>
 </template>
 
@@ -36,9 +42,11 @@ export default {
       47166,
     ],
     movies: [],
+    categories: [],
   }),
   mounted() {
     this.fetchData();
+    this.fetchCategories();
   },
   methods: {
     fetchData() {
@@ -54,6 +62,11 @@ export default {
         }).catch((error) => {
           console.log(error);
         });
+    },
+    fetchCategories() {
+      axios.get('http://127.0.0.1:4000/categories').then((response) => {
+        this.categories = response.data;
+      });
     },
   },
 };

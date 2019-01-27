@@ -71,12 +71,11 @@
 
 <script>
 
-const axios = require('axios');
+import Api from '../modules/masaApi';
 
 export default {
 
   data: () => ({
-    token: '',
     username: '',
     password: '',
     snackbar: {
@@ -90,26 +89,27 @@ export default {
   },
   methods: {
     register() {
-      axios.post('http://127.0.0.1:4000/users/register', {
+      Api.register({
         username: 'Ralfes', password: 'root', firstName: 'Ralle', lastName: 'Kalle',
       })
-        .then((response) => {
-          console.log(response);
+        .then((res) => {
           this.snackbar.text = 'Successfully registered';
           this.snackbar.show = true;
-        }).catch((error) => {
-          this.snackbar.text = error.response;
+        }).catch((err) => {
+          this.snackbar.text = err.response;
           this.snackbar.show = true;
         });
     },
     login() {
-      axios.post('http://127.0.0.1:4000/users/authenticate', {
-        username: this.username, password: this.password,
-      }).then((response) => {
-        this.token = response.data.token;
-        this.snackbar.text = 'Login successful';
-        this.snackbar.show = true;
-      });
+      Api.authenticate(this.username, this.password)
+        .then((res) => {
+          this.$cookies.set('auth_token', res.data.token);
+          this.snackbar.text = 'Login successful';
+          this.snackbar.show = true;
+        }).catch((err) => {
+          this.snackbar.text = err.response;
+          this.snackbar.show = true;
+        });
     },
   },
 };

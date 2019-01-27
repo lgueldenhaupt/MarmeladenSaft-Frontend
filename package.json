@@ -11,7 +11,9 @@
     "axios": "^0.18.0",
     "dotenv": "^6.2.0",
     "vue": "^2.5.17",
+    "vue-cookies": "^1.5.12",
     "vue-router": "^3.0.1",
+    "vuejs-jwt": "^1.1.0",
     "vuetify": "^1.4.2"
   },
   "devDependencies": {

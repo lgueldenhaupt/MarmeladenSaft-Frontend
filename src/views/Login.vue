@@ -88,26 +88,13 @@ export default {
   mounted() {
   },
   methods: {
-    register() {
-      Api.register({
-        username: 'Ralfes', password: 'root', firstName: 'Ralle', lastName: 'Kalle',
-      })
-        .then((res) => {
-          this.snackbar.text = 'Successfully registered';
-          this.snackbar.show = true;
-        }).catch((err) => {
-          this.snackbar.text = err.response;
-          this.snackbar.show = true;
-        });
-    },
     login() {
       Api.authenticate(this.username, this.password)
         .then((res) => {
-          this.$cookies.set('auth_token', res.data.token);
           this.snackbar.text = 'Login successful';
           this.snackbar.show = true;
         }).catch((err) => {
-          this.snackbar.text = err.response;
+          this.snackbar.text = 'Login failed';
           this.snackbar.show = true;
         });
     },

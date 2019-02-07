@@ -22,7 +22,7 @@ module.exports = {
     parser: 'babel-eslint',
   },
 
-  "plugins": [
-    "html"
+  plugins: [
+    'html'
   ]
 };

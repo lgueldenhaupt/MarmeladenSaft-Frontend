@@ -1,26 +1,14 @@
 import axios from 'axios';
 
-let api = null;
-
-function getBaseUrl() {
-  return process.env.VUE_APP_API_BASE_URL;
-}
-
-function getApi() {
-  api = api || axios.create({
-    baseURL: getBaseUrl(),
-    responseType: 'json',
-    // withCredentials: true,
-  });
-  return api;
-}
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL;
 
 function get(url) {
-  return getApi().get(url);
+  return axios.get(url);
 }
 
 function post(url, data) {
-  return getApi().post(url, data);
+  return axios.post(url, data);
 }
 
 /**
@@ -44,7 +32,12 @@ function authenticate(username, password) {
   });
 }
 
+function getCategories() {
+  return get('categories');
+}
+
 export default {
   authenticate,
   register,
+  getCategories,
 };

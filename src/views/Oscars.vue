@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div v-for="category in categories">
+    <div
+      v-for="category in categories"
+      :key="category.id"
+    >
       <h1 class="text-md-center">
         {{ category.name }}
       </h1>
@@ -15,6 +18,7 @@
         >
           <v-flex
             v-for="movie in movies"
+            :key="movie.id"
             xs5
             sm3
             md2
@@ -29,6 +33,8 @@
 
 <script>
 import MovieCard from '../components/MovieCard.vue';
+import Api from '../modules/masaApi';
+
 
 const axios = require('axios');
 
@@ -53,7 +59,7 @@ export default {
       const requests = [];
       for (let i = 0; i < this.movieIds.length; i++) {
         const url = `https://api.themoviedb.org/3/movie/${this.movieIds[i]}?api_key=${process.env.VUE_APP_TMDB_API_KEY}&language=de-DE)`;
-        requests.push(axios.get(url));
+        requests.push(axios.get(url, { withCredentials: false }));
       }
 
       axios.all(requests)
@@ -64,8 +70,10 @@ export default {
         });
     },
     fetchCategories() {
-      axios.get('http://127.0.0.1:4000/categories').then((response) => {
+      Api.getCategories().then((response) => {
         this.categories = response.data;
+      }).catch((error) => {
+        console.log(error);
       });
     },
   },

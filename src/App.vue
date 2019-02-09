@@ -29,6 +29,7 @@
     </v-navigation-drawer>
 
     <v-toolbar
+      v-if="navbar.visible"
       :clipped-left="$vuetify.breakpoint.lgAndUp"
       app
       fixed
@@ -55,11 +56,13 @@
 </template>
 
 <script>
-
 export default {
   name: 'App',
   data() {
     return {
+      navbar: {
+        visible: true,
+      },
       drawer: {
         open: false,
         items: [

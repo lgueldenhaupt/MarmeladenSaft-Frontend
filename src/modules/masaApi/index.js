@@ -32,6 +32,10 @@ function authenticate(username, password) {
   });
 }
 
+function getCurrentUser() {
+  return get('users/current');
+}
+
 function getCategories() {
   return get('categories');
 }
@@ -40,4 +44,5 @@ export default {
   authenticate,
   register,
   getCategories,
+  getCurrentUser,
 };
